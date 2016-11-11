@@ -14,6 +14,7 @@ class ViewController: UIViewController, XMLParserDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.xmlParser.delegate = self
     self.getRSSFeed()
   }
   
@@ -27,15 +28,13 @@ class ViewController: UIViewController, XMLParserDelegate {
     let session = URLSession(configuration: .default)
     
     let task = session.dataTask(with: urlRequest) { (data, response, error) in
-      DispatchQueue.main.async {
-        print(data!)
-      }
+      self.xmlParser = XMLParser(data: data!) //pass data to the parser instance
+      self.xmlParser.parse()
     }
     
     task.resume()
-    
   }
-
+  
 
 }
 
