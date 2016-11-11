@@ -12,6 +12,11 @@ class ViewController: UIViewController, XMLParserDelegate {
 
   private var xmlParser: XMLParser!
   
+  //temporary fields
+  private var itemTitle: String!
+  private var link: String!
+  private var pubDate: String!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.getRSSFeed()
@@ -39,7 +44,28 @@ class ViewController: UIViewController, XMLParserDelegate {
   }
   
   func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-    print(elementName)
+    
+    guard elementName.lowercased() == "item" else {
+      return
+    }
+    
+    //only elementNames with title will be printed. implementation might change later
+    self.itemTitle = String()
+    self.link = String()
+    self.pubDate = String()
+    
+  }
+  
+  func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    
+    guard elementName.lowercased() == "item" else {
+      return
+    }
+    
+  }
+  
+  func parser(_ parser: XMLParser, foundCharacters string: String) {
+    
   }
   
 
