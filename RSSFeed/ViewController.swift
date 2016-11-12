@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController, XMLParserDelegate {
 
   private var xmlParser: XMLParser!
-  private var session: URLSession!
+  private var session = URLSession(configuration: .default)
   
   //temporary fields
   private var itemTitle: String!
@@ -30,7 +30,6 @@ class ViewController: UIViewController, XMLParserDelegate {
   private func getRSSFeed() {
     let url = URL(string: "https://www.cnet.com/rss/news/")!
     let urlRequest = URLRequest(url: url)
-    session = URLSession(configuration: .default)
     
     let task = session.dataTask(with: urlRequest) { (data, response, error) in
       DispatchQueue.main.async {
