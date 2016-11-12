@@ -12,11 +12,15 @@ class ViewController: UIViewController, XMLParserDelegate {
 
   private var xmlParser: XMLParser!
   private var session = URLSession(configuration: .default)
+  private var items = [RSSModel]()
   
   //temporary fields
-  private var itemTitle: String!
-  private var link: String!
-  private var pubDate: String!
+  private var articleTitle  = String()
+  private var link          = String()
+  private var pubdate       = String()
+  private var content       = String()
+  
+  private var key = String()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -28,7 +32,7 @@ class ViewController: UIViewController, XMLParserDelegate {
   }
   
   private func getRSSFeed() {
-    let url = URL(string: "https://www.cnet.com/rss/news/")!
+    let url = URL(string: "http://feeds.feedburner.com/TechCrunch/")!
     let urlRequest = URLRequest(url: url)
     
     let task = session.dataTask(with: urlRequest) { (data, response, error) in
@@ -45,29 +49,52 @@ class ViewController: UIViewController, XMLParserDelegate {
   
   func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
     
-    guard elementName.lowercased() == "item" else {
-      return
+    self.key = elementName
+    
+    if (elementName.lowercased() == "item") {
+      self.articleTitle = String()
+      self.link = String()
+      self.pubdate = String()
+      self.content = String()
     }
-    
-    //only elementNames with title will be printed. implementation might change later
-    self.itemTitle = String()
-    self.link = String()
-    self.pubDate = String()
-    
   }
   
   func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
     
-    guard elementName.lowercased() == "item" else {
-      return
+    if (elementName.lowercased() == "item") {
+      var model = RSSModel()
+      model.title   = self.articleTitle
+      model.link    = self.articleTitle
+      model.pubdate = self.pubdate
+      self.items.append(model)
     }
     
   }
   
   func parser(_ parser: XMLParser, foundCharacters string: String) {
+    let data = string.trimmingCharacters(in: .whitespacesAndNewlines)
     
+    
+    if (self.key == "title") {
+      
+      if (!(data.lowercased() == "techcrunch")) {
+        self.articleTitle += data
+      }
+      
+    }
+      
+    else if (self.key == "link") {
+      self.link += data
+    }
+      
+    else if (self.key == "pubdate") {
+      self.pubdate += data
+    }
   }
   
+  func parserDidEndDocument(_ parser: XMLParser) {
+    //reload table/collection view here
+  }
 
 }
 
