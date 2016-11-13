@@ -21,6 +21,7 @@ class ViewController: UIViewController, XMLParserDelegate {
   private var content       = String()
   
   private var key = String()
+  private var isItem = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,51 +50,83 @@ class ViewController: UIViewController, XMLParserDelegate {
   
   func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
     
-    self.key = elementName
     
-    if (elementName.lowercased() == "item") {
-      self.articleTitle = String()
-      self.link = String()
-      self.pubdate = String()
-      self.content = String()
+    if (elementName == "item") {
+      isItem = true
+    }
+    
+    if (isItem) {
+      switch elementName {
+      case "title":
+        self.articleTitle = String()
+        self.key = "title"
+      
+      case "link":
+        self.link = String()
+        self.key = "link"
+        
+      case "pubDate":
+        self.pubdate = String()
+        self.key = "pubDate"
+        
+      default:
+        break
+      }
+      
     }
   }
   
   func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
     
-    if (elementName.lowercased() == "item") {
-      var model = RSSModel()
-      model.title   = self.articleTitle
-      model.link    = self.articleTitle
-      model.pubdate = self.pubdate
-      self.items.append(model)
+    if (isItem) {
+      switch self.key {
+      case "title":
+        self.key = String()
+      
+      case "link":
+        self.key = String()
+        
+      case "pubDate":
+        self.key = String()
+        
+      default:
+        break
+      }
     }
     
+    if (elementName == "item") {
+      var model = RSSModel()
+      model.title = self.articleTitle
+      model.link = self.link
+      model.pubdate = self.pubdate
+      items.append(model)
+      
+    }
   }
   
   func parser(_ parser: XMLParser, foundCharacters string: String) {
     let data = string.trimmingCharacters(in: .whitespacesAndNewlines)
     
-    
-    if (self.key == "title") {
-      
-      if (!(data.lowercased() == "techcrunch")) {
+    if (isItem) {
+      switch self.key {
+      case "title":
         self.articleTitle += data
+        
+      case "link":
+        self.link += data
+        
+      case "pubDate":
+        self.pubdate += data
+      
+      default:
+        break
       }
-      
     }
-      
-    else if (self.key == "link") {
-      self.link += data
-    }
-      
-    else if (self.key == "pubdate") {
-      self.pubdate += data
-    }
+    
   }
   
   func parserDidEndDocument(_ parser: XMLParser) {
-    //reload table/collection view here
+    print(items[0])
   }
 
 }
