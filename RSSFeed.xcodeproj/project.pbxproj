@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2B38DDDB1DD6547900AB5D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B38DDDA1DD6547900AB5D6B /* AppDelegate.swift */; };
-		2B38DDDD1DD6547900AB5D6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B38DDDC1DD6547900AB5D6B /* ViewController.swift */; };
 		2B38DDE01DD6547900AB5D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B38DDDE1DD6547900AB5D6B /* Main.storyboard */; };
 		2B38DDE21DD6547900AB5D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B38DDE11DD6547900AB5D6B /* Assets.xcassets */; };
 		2B38DDE51DD6547900AB5D6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B38DDE31DD6547900AB5D6B /* LaunchScreen.storyboard */; };
 		2B38DDF01DD6547900AB5D6B /* RSSFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B38DDEF1DD6547900AB5D6B /* RSSFeedTests.swift */; };
 		2B38DDFB1DD6547900AB5D6B /* RSSFeedUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B38DDFA1DD6547900AB5D6B /* RSSFeedUITests.swift */; };
+		2B907AF31DE2247F00A1B16B /* RSSCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B907AF21DE2247F00A1B16B /* RSSCollectionViewController.swift */; };
 		2BC1FBAE1DD7969100E2127D /* RSSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC1FBAD1DD7969100E2127D /* RSSModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +37,6 @@
 /* Begin PBXFileReference section */
 		2B38DDD71DD6547900AB5D6B /* RSSFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B38DDDA1DD6547900AB5D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2B38DDDC1DD6547900AB5D6B /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		2B38DDDF1DD6547900AB5D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B38DDE11DD6547900AB5D6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B38DDE41DD6547900AB5D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		2B38DDF61DD6547900AB5D6B /* RSSFeedUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSFeedUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B38DDFA1DD6547900AB5D6B /* RSSFeedUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedUITests.swift; sourceTree = "<group>"; };
 		2B38DDFC1DD6547900AB5D6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B907AF21DE2247F00A1B16B /* RSSCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSCollectionViewController.swift; sourceTree = "<group>"; };
 		2BC1FBAD1DD7969100E2127D /* RSSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,12 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				2B38DDDA1DD6547900AB5D6B /* AppDelegate.swift */,
-				2B38DDDC1DD6547900AB5D6B /* ViewController.swift */,
 				2B38DDDE1DD6547900AB5D6B /* Main.storyboard */,
 				2B38DDE11DD6547900AB5D6B /* Assets.xcassets */,
 				2B38DDE31DD6547900AB5D6B /* LaunchScreen.storyboard */,
 				2B38DDE61DD6547900AB5D6B /* Info.plist */,
 				2BC1FBAD1DD7969100E2127D /* RSSModel.swift */,
+				2B907AF21DE2247F00A1B16B /* RSSCollectionViewController.swift */,
 			);
 			path = RSSFeed;
 			sourceTree = "<group>";
@@ -263,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BC1FBAE1DD7969100E2127D /* RSSModel.swift in Sources */,
-				2B38DDDD1DD6547900AB5D6B /* ViewController.swift in Sources */,
+				2B907AF31DE2247F00A1B16B /* RSSCollectionViewController.swift in Sources */,
 				2B38DDDB1DD6547900AB5D6B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
