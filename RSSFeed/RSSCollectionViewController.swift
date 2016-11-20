@@ -37,12 +37,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         let urlRequest = URLRequest(url: url)
         
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
-            DispatchQueue.main.async {
-                self.xmlParser = XMLParser(data: data!) //pass data to the parser instance
-                self.xmlParser.delegate = self
-                self.xmlParser.parse()
-                //should also be reloading the table/collection view here
-            }
+            self.xmlParser = XMLParser(data: data!) //pass data to the parser instance
+            self.xmlParser.delegate = self
+            self.xmlParser.parse()
         }
         
         task.resume()
@@ -126,7 +123,10 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     }
     
     func parserDidEndDocument(_ parser: XMLParser) {
-        print(items[0])
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+            print(self.items[0])
+        }
     }
     
 }
