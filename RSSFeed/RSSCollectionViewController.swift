@@ -19,9 +19,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     private var link          = String()
     private var pubdate       = String()
     private var content       = String()
-    
-    private var key = String()
-    private var isItem = false
+    private var key           = String()
+    private var isItem        = false
+    private var customCell    = "cell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +32,18 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: CollectionViewController methods
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.items.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCell, for: indexPath) as! RSSCollectionViewCell
+        return cell
+    }
+    
+    
+    // MARK: XML Parsing
     private func getRSSFeed() {
         let url = URL(string: "http://feeds.feedburner.com/TechCrunch/")!
         let urlRequest = URLRequest(url: url)
