@@ -39,6 +39,14 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCell, for: indexPath) as! RSSCollectionViewCell
+        
+        
+        cell.titleLabel.text = items[indexPath.row].title
+        cell.linkLabel.text = items[indexPath.row].link
+        cell.dateLabel.text = items[indexPath.row].pubdate
+        cell.textView.text = items[indexPath.row].description
+        
+        
         return cell
     }
     
@@ -77,6 +85,10 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             case "pubDate":
                 self.pubdate = String()
                 self.key = "pubDate"
+            
+            case "description":
+                self.content = String()
+                self.key = "description"
                 
             default:
                 break
@@ -97,6 +109,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 
             case "pubDate":
                 self.key = String()
+            
+            case "description":
+                self.key = String()
                 
             default:
                 break
@@ -108,8 +123,19 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             model.title = self.articleTitle
             model.link = self.link
             model.pubdate = self.pubdate
-            items.append(model)
+            //model.description
             
+           
+            if let startrange = self.content.range(of: ">&nbsp;"), let endRange = self.content.range(of: "<a href"){
+                let substring = self.content[startrange.lowerBound...endRange.upperBound]
+                model.description = substring
+            }
+ 
+            
+            //model.description = self.content
+            
+            items.append(model)
+            print(items)
         }
     }
     
@@ -126,6 +152,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 
             case "pubDate":
                 self.pubdate += data
+                
+            case "description":
+                self.content += data
                 
             default:
                 break
