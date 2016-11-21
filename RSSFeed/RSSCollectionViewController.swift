@@ -45,12 +45,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         return cell
     }
     
-    private func customLayout() {
-        let layout = UICollectionViewFlowLayout()
-        self.collectionView?.collectionViewLayout = layout
-    }
-    
-    
     // MARK: XML Parsing
     private func getRSSFeed() {
         let url = URL(string: "http://feeds.feedburner.com/TechCrunch/")!
