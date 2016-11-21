@@ -16,8 +16,6 @@ class RSSCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var linkLabel: UILabel!
-    
-    @IBOutlet weak var textView: UITextView!
-    
+        
     @IBOutlet weak var imageView: UIImageView!
 }
