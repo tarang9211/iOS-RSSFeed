@@ -26,6 +26,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.customLayout()
         self.getRSSFeed()
     }
     
@@ -42,6 +43,11 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCell, for: indexPath) as! RSSCollectionViewCell
         cell.setUpCell(model: items[indexPath.row])
         return cell
+    }
+    
+    private func customLayout() {
+        let layout = UICollectionViewFlowLayout()
+        self.collectionView?.collectionViewLayout = layout
     }
     
     
