@@ -152,9 +152,8 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 }
             
             items.append(model)
-            print(items)
-            
-            print(images)
+            //print(items)
+            //print(images)
             
         }
     }
