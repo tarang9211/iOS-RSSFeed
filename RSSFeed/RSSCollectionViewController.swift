@@ -128,15 +128,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             
            
             
-            
-            if let startrange = self.content.range(of: ">&nbsp;"), let endRange = self.content.range(of: "<a href"){
-                
-                let substring = self.content[startrange.lowerBound...endRange.upperBound]
-                
-                model.description = substring
-
-                }
- 
              if let startrange = self.content.range(of: "https://"), let endRange = self.content.range(of: ".jpg")
                 {
              
@@ -147,8 +138,10 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                     
                     images.append(UIImage(data: data!)!)
                     
-                    
                 }
+            
+            
+            model.description = self.content
             
             items.append(model)
             //print(items)
@@ -184,7 +177,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
-            print(self.items[0])
         }
     }
     
