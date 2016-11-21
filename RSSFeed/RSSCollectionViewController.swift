@@ -40,13 +40,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCell, for: indexPath) as! RSSCollectionViewCell
-        
-        
-//        cell.titleLabel.text = items[indexPath.row].title
-//        cell.linkLabel.text = items[indexPath.row].link
-//        cell.dateLabel.text = items[indexPath.row].pubdate
-//        cell.imageView.image = images[indexPath.row]
-        
         cell.setUpCell(model: items[indexPath.row])
         return cell
     }
