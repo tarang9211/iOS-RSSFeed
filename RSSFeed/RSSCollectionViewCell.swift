@@ -10,5 +10,12 @@ import Foundation
 import UIKit
 
 class RSSCollectionViewCell: UICollectionViewCell {
+ 
+    @IBOutlet weak var titleLabel: UILabel!
+  
+    @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var linkLabel: UILabel!
+        
+    @IBOutlet weak var imageView: UIImageView!
 }
