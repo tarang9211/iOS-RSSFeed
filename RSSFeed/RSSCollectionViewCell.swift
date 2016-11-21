@@ -19,4 +19,5 @@ class RSSCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var textView: UITextView!
     
+    @IBOutlet weak var imageView: UIImageView!
 }

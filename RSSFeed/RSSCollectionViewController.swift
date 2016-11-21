@@ -13,6 +13,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     private var xmlParser: XMLParser!
     private var session = URLSession(configuration: .default)
     private var items = [RSSModel]()
+    private var images = [UIImage]()
     
     //temporary fields
     private var articleTitle  = String()
@@ -45,6 +46,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         cell.linkLabel.text = items[indexPath.row].link
         cell.dateLabel.text = items[indexPath.row].pubdate
         cell.textView.text = items[indexPath.row].description
+        cell.imageView.image = images[indexPath.row]
         
         
         return cell
@@ -126,16 +128,34 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             //model.description
             
            
+            
+            
             if let startrange = self.content.range(of: ">&nbsp;"), let endRange = self.content.range(of: "<a href"){
-                let substring = self.content[startrange.lowerBound...endRange.upperBound]
-                model.description = substring
+                
+                let substring = self.content[startrange.lowerBound...endRange.upperBound].stringByDecodingHTMLEntities
+                
+                    model.description = substring
+
             }
  
+             if let startrange = self.content.range(of: "https://"), let endRange = self.content.range(of: ".jpg")
+                {
+             
+                let substring = self.content[startrange.lowerBound...endRange.upperBound]
             
-            //model.description = self.content
+                    let url = URL(string: substring)
+                    let data = try? Data(contentsOf: url!)
+                    
+                    images.append(UIImage(data: data!)!)
+                    
+                    
+                }
             
             items.append(model)
             print(items)
+            
+            print(images)
+            
         }
     }
     
@@ -170,4 +190,92 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         }
     }
     
+    
+    
+}
+
+
+// Mapping from XML/HTML character entity reference to character
+// From http://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
+private let characterEntities : [ String : Character ] = [
+    // XML predefined entities:
+    "&quot;"    : "\"",
+    "&amp;"     : "&",
+    "&apos;"    : "'",
+    "&lt;"      : "<",
+    "&gt;"      : ">",
+    
+    // HTML character entity references:
+    "&nbsp;"    : "\u{00a0}",
+    // ...
+    "&diams;"   : "♦",
+]
+
+extension String {
+    
+    /// Returns a new string made by replacing in the `String`
+    /// all HTML character entity references with the corresponding
+    /// character.
+    var stringByDecodingHTMLEntities : String {
+        
+        // ===== Utility functions =====
+        
+        // Convert the number in the string to the corresponding
+        // Unicode character, e.g.
+        //    decodeNumeric("64", 10)   --> "@"
+        //    decodeNumeric("20ac", 16) --> "€"
+        func decodeNumeric(_ string : String, base : Int) -> Character? {
+            guard let code = UInt32(string, radix: base),
+                let uniScalar = UnicodeScalar(code) else { return nil }
+            return Character(uniScalar)
+        }
+        
+        // Decode the HTML character entity to the corresponding
+        // Unicode character, return `nil` for invalid input.
+        //     decode("&#64;")    --> "@"
+        //     decode("&#x20ac;") --> "€"
+        //     decode("&lt;")     --> "<"
+        //     decode("&foo;")    --> nil
+        func decode(_ entity : String) -> Character? {
+            
+            if entity.hasPrefix("&#x") || entity.hasPrefix("&#X"){
+                return decodeNumeric(entity.substring(with: entity.index(entity.startIndex, offsetBy: 3) ..< entity.index(entity.endIndex, offsetBy: -1)), base: 16)
+            } else if entity.hasPrefix("&#") {
+                return decodeNumeric(entity.substring(with: entity.index(entity.startIndex, offsetBy: 2) ..< entity.index(entity.endIndex, offsetBy: -1)), base: 10)
+            } else {
+                return characterEntities[entity]
+            }
+        }
+        
+        // ===== Method starts here =====
+        
+        var result = ""
+        var position = startIndex
+        
+        // Find the next '&' and copy the characters preceding it to `result`:
+        while let ampRange = self.range(of: "&", range: position ..< endIndex) {
+            result.append(self[position ..< ampRange.lowerBound])
+            position = ampRange.lowerBound
+            
+            // Find the next ';' and copy everything from '&' to ';' into `entity`
+            if let semiRange = self.range(of: ";", range: position ..< endIndex) {
+                let entity = self[position ..< semiRange.upperBound]
+                position = semiRange.upperBound
+                
+                if let decoded = decode(entity) {
+                    // Replace by decoded character:
+                    result.append(decoded)
+                } else {
+                    // Invalid entity, copy verbatim:
+                    result.append(entity)
+                }
+            } else {
+                // No matching ';'.
+                break
+            }
+        }
+        // Copy remaining characters to `result`:
+        result.append(self[position ..< endIndex])
+        return result
+    }
 }
