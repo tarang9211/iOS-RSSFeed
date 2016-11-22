@@ -19,7 +19,7 @@ class RSSCollectionViewCell: UICollectionViewCell {
         self.titleLabel.text = model.title
         self.dateLabel.text = model.pubdate
         
-        self.contentView.layer.backgroundColor = UIColor.blue.cgColor
+        self.contentView.layer.backgroundColor = UIColor.white.cgColor
         self.contentView.layer.cornerRadius = 5
         self.contentView.layer.masksToBounds = true;
         self.layer.shadowColor = UIColor.black.cgColor

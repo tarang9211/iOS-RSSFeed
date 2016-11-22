@@ -27,10 +27,20 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getRSSFeed()
+        self.layoutCells()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func layoutCells() {
+        let layout = UICollectionViewFlowLayout()
+        self.collectionView?.collectionViewLayout = layout
+        
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.5)
+        layout.minimumLineSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }
     
     // MARK: CollectionViewController methods
