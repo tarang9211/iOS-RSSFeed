@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		198EAAE71DE3EE0F00851A3B /* RSSViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198EAAE61DE3EE0F00851A3B /* RSSViewFlowLayout.swift */; };
 		2B38DDDB1DD6547900AB5D6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B38DDDA1DD6547900AB5D6B /* AppDelegate.swift */; };
 		2B38DDE01DD6547900AB5D6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B38DDDE1DD6547900AB5D6B /* Main.storyboard */; };
 		2B38DDE21DD6547900AB5D6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B38DDE11DD6547900AB5D6B /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		198EAAE61DE3EE0F00851A3B /* RSSViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSViewFlowLayout.swift; sourceTree = "<group>"; };
 		2B38DDD71DD6547900AB5D6B /* RSSFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B38DDDA1DD6547900AB5D6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B38DDDF1DD6547900AB5D6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				2B38DDE31DD6547900AB5D6B /* LaunchScreen.storyboard */,
 				2B38DDE61DD6547900AB5D6B /* Info.plist */,
 				2BC1FBAD1DD7969100E2127D /* RSSModel.swift */,
+				198EAAE61DE3EE0F00851A3B /* RSSViewFlowLayout.swift */,
 				2B907AF21DE2247F00A1B16B /* RSSCollectionViewController.swift */,
 				2B8E8D6A1DE22823001A70CA /* RSSCollectionViewCell.swift */,
 			);
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				198EAAE71DE3EE0F00851A3B /* RSSViewFlowLayout.swift in Sources */,
 				2BC1FBAE1DD7969100E2127D /* RSSModel.swift in Sources */,
 				2B8E8D6B1DE22823001A70CA /* RSSCollectionViewCell.swift in Sources */,
 				2B907AF31DE2247F00A1B16B /* RSSCollectionViewController.swift in Sources */,
