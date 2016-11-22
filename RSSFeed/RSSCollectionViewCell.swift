@@ -15,7 +15,19 @@ class RSSCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    func setUpCell(model: RSSModel) {
+    func setUpCell(model: RSSModel, image: UIImage) {
         self.titleLabel.text = model.title
+        self.dateLabel.text = model.pubdate
+        self.imageView.image = image
+        
+        self.contentView.layer.backgroundColor = UIColor.white.cgColor
+        self.contentView.layer.cornerRadius = 5
+        self.contentView.layer.masksToBounds = true;
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width:0, height: 2.0)
+        self.layer.shadowOpacity = 0.2
+        self.layer.masksToBounds = false;
+
+        
     }
 }
