@@ -28,6 +28,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         super.viewDidLoad()
         self.getRSSFeed()
         self.layoutCells()
+        
+        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+        self.navigationController?.hidesBarsOnSwipe = true
     }
     
     override func didReceiveMemoryWarning() {
