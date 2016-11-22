@@ -40,7 +40,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCell, for: indexPath) as! RSSCollectionViewCell
-        cell.setUpCell(model: items[indexPath.row], image: images[indexPath.row])
+        cell.setUpCell(model: items[indexPath.row])
         return cell
     }
     
@@ -117,19 +117,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             model.link = self.link
             model.pubdate = self.pubdate
             items.append(model)
-            
-            if let startrange = self.content.range(of: "https://"), let endRange = self.content.range(of: ".jpg")
-            {
-                
-                let substring = self.content[startrange.lowerBound...endRange.upperBound]
-                
-                let url = URL(string: substring)
-                let data = try? Data(contentsOf: url!)
-                
-                images.append(UIImage(data: data!)!)
-                
-            }
-            
         }
     }
     

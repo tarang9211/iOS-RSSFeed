@@ -15,12 +15,11 @@ class RSSCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    func setUpCell(model: RSSModel, image: UIImage) {
+    func setUpCell(model: RSSModel) {
         self.titleLabel.text = model.title
         self.dateLabel.text = model.pubdate
-        self.imageView.image = image
         
-        self.contentView.layer.backgroundColor = UIColor.white.cgColor
+        self.contentView.layer.backgroundColor = UIColor.blue.cgColor
         self.contentView.layer.cornerRadius = 5
         self.contentView.layer.masksToBounds = true;
         self.layer.shadowColor = UIColor.black.cgColor
