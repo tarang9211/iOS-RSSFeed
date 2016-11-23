@@ -163,7 +163,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
-            print(self.items[0].description)
         }
     }
     
