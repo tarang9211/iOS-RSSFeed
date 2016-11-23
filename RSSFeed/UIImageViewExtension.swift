@@ -14,7 +14,7 @@ typealias Image_Alias = (UIImage) -> Void
 
 extension UIImageView {
     
-    func downloadImage(link: String) {
+    func downloadImage(link: String, callback: Image_Alias = { _ in }) {
         
         self.image = UIImage(named: "placeholder")
         
@@ -34,6 +34,7 @@ extension UIImageView {
                     
                     DispatchQueue.main.async {
                         print(url)
+                        self.image = img
                     }
                 }
             }

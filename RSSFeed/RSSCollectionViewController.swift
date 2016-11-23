@@ -125,18 +125,13 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         }
         
         if (elementName == "item") {
-            var model = RSSModel()
-            model.title = self.articleTitle
-            model.link = self.link
-            model.pubdate = self.pubdate
-            model.description = self.content
             
             guard let startRange = self.content.range(of: "https://"), let endRange = self.content.range(of: ".jpg") else {
                 return
             }
-            
+
             let subStr = self.content[startRange.lowerBound...endRange.upperBound]
-            model.imgUrl = subStr
+            let model = RSSModel(title: self.articleTitle, link: self.link, pubdate: self.pubdate, description: self.content, imgUrl: subStr)
             items.append(model)
         }
     }
