@@ -18,6 +18,7 @@ class RSSCollectionViewCell: UICollectionViewCell {
 
     func setUpCell(model: RSSModel) {
         self.titleLabel.text = model.title
+        print(model.pubdate)
         
         if let image = model.image {
             imageView.image = image
@@ -40,4 +41,6 @@ class RSSCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.2
         self.layer.masksToBounds = false;
     }
+    
+    
 }

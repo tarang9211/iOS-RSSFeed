@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
+class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate {
     private var xmlParser: XMLParser!
     private var session = URLSession(configuration: .default)
     private var items = [RSSModel]()
