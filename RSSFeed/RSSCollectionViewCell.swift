@@ -18,7 +18,7 @@ class RSSCollectionViewCell: UICollectionViewCell {
     func setUpCell(model: RSSModel) {
         self.titleLabel.text = model.title
         self.dateLabel.text = model.pubdate
-        self.imageView.downloadImage(link: model.link)
+        self.imageView.downloadImage(link: model.imgUrl)
         
         self.setUpCardCell()
         

@@ -32,6 +32,9 @@ extension UIImageView {
                 if let imgData = data {
                     let img = UIImage(data: imgData)
                     
+                    DispatchQueue.main.async {
+                        print(url)
+                    }
                 }
             }
         }
