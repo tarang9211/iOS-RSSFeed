@@ -38,13 +38,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-B1-fe4">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-B1-fe4">
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="UGa-B1-fe4" secondAttribute="height" multiplier="329:193" id="FrI-Ur-9JD"/>
+                                                <constraint firstAttribute="height" constant="193" id="w3z-de-n7t"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEj-bw-95Z">
-                                            <frame key="frameInset" minX="25" minY="330" width="325" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEj-bw-95Z">
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -52,16 +51,15 @@
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="UGa-B1-fe4" firstAttribute="top" secondItem="9dl-Tk-rVw" secondAttribute="top" id="8ot-Pm-tFF"/>
                                     <constraint firstItem="IEj-bw-95Z" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leadingMargin" constant="17" id="X06-dk-kz9"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="IEj-bw-95Z" secondAttribute="bottom" constant="42" id="XDf-s8-Ixf"/>
                                     <constraint firstAttribute="bottom" secondItem="Z5r-S3-p8Q" secondAttribute="bottom" constant="98" id="aSJ-Nb-j8z"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="UGa-B1-fe4" secondAttribute="trailing" constant="6" id="fJQ-kG-xUq"/>
+                                    <constraint firstAttribute="trailing" secondItem="UGa-B1-fe4" secondAttribute="trailing" id="cdL-cF-0ns"/>
                                     <constraint firstAttribute="trailing" secondItem="Z5r-S3-p8Q" secondAttribute="trailing" id="fLj-ZC-ipW"/>
-                                    <constraint firstItem="Z5r-S3-p8Q" firstAttribute="top" secondItem="UGa-B1-fe4" secondAttribute="bottom" constant="13" id="h5K-xl-0OV"/>
                                     <constraint firstItem="Z5r-S3-p8Q" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leading" constant="26" id="jqt-Lg-2C6"/>
+                                    <constraint firstItem="UGa-B1-fe4" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leading" id="rX5-Pp-a0M"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="IEj-bw-95Z" secondAttribute="trailing" constant="17" id="spu-Dc-eOO"/>
-                                    <constraint firstItem="UGa-B1-fe4" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leadingMargin" constant="24" id="xlX-jV-hmj"/>
-                                    <constraint firstItem="UGa-B1-fe4" firstAttribute="top" secondItem="9dl-Tk-rVw" secondAttribute="topMargin" constant="11" id="ymU-Bh-AYe"/>
                                 </constraints>
                                 <size key="customSize" width="375" height="401"/>
                                 <connections>

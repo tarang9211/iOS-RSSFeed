@@ -41,7 +41,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         let layout = UICollectionViewFlowLayout()
         self.collectionView?.collectionViewLayout = layout
         
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.5)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.4)
         layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }
@@ -130,7 +130,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 return
             }
 
-            let subStr = self.content[startRange.lowerBound...endRange.upperBound] + "w=300"
+            let subStr = self.content[startRange.lowerBound...endRange.upperBound] + "w=400"
             let model = RSSModel(title: self.articleTitle, link: self.link, pubdate: self.pubdate, description: self.content, imgUrl: subStr)
             items.append(model)
         }
