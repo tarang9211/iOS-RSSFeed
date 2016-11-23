@@ -18,7 +18,13 @@ class RSSCollectionViewCell: UICollectionViewCell {
     func setUpCell(model: RSSModel) {
         self.titleLabel.text = model.title
         self.dateLabel.text = model.pubdate
+        self.imageView.downloadImage(link: model.link)
         
+        self.setUpCardCell()
+        
+    }
+    
+    private func setUpCardCell() {
         self.contentView.layer.backgroundColor = UIColor.white.cgColor
         self.contentView.layer.cornerRadius = 5
         self.contentView.layer.masksToBounds = true;
@@ -26,7 +32,5 @@ class RSSCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOffset = CGSize(width:0, height: 2.0)
         self.layer.shadowOpacity = 0.2
         self.layer.masksToBounds = false;
-
-        
     }
 }
