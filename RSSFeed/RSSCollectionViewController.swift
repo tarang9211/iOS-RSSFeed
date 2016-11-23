@@ -92,6 +92,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 self.pubdate = String()
                 self.key = "pubDate"
         
+            case "description":
+                self.content = String()
+                self.key = "description"
                 
             default:
                 break
@@ -113,6 +116,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             case "pubDate":
                 self.key = String()
                 
+            case "description":
+                self.key = String()
+                
             default:
                 break
             }
@@ -123,6 +129,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             model.title = self.articleTitle
             model.link = self.link
             model.pubdate = self.pubdate
+            model.description = self.content
             items.append(model)
         }
     }
@@ -141,6 +148,9 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             case "pubDate":
                 self.pubdate += data
                 
+            case "description":
+                self.content += data
+                
             default:
                 break
             }
@@ -151,6 +161,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
+            print(self.items[0].description)
         }
     }
     

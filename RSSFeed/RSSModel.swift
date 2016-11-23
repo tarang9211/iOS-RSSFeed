@@ -13,4 +13,5 @@ struct RSSModel {
     var link: String!
     var pubdate: String! //cast it to a Date later
     var description: String!
+    var imgUrl: String!
 }
