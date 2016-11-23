@@ -130,7 +130,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 return
             }
 
-            let subStr = self.content[startRange.lowerBound...endRange.upperBound]
+            let subStr = self.content[startRange.lowerBound...endRange.upperBound] + "w=300"
             let model = RSSModel(title: self.articleTitle, link: self.link, pubdate: self.pubdate, description: self.content, imgUrl: subStr)
             items.append(model)
         }
@@ -163,7 +163,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
-//            print(self.items[0].description)
+            print(self.items[0].description)
         }
     }
     
