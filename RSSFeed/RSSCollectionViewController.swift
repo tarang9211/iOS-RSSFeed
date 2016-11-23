@@ -91,10 +91,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             case "pubDate":
                 self.pubdate = String()
                 self.key = "pubDate"
-            
-            case "description":
-                self.content = String()
-                self.key = "description"
+        
                 
             default:
                 break
@@ -114,9 +111,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 self.key = String()
                 
             case "pubDate":
-                self.key = String()
-            
-            case "description":
                 self.key = String()
                 
             default:
@@ -146,9 +140,6 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
                 
             case "pubDate":
                 self.pubdate += data
-                
-            case "description":
-                self.content += data
                 
             default:
                 break
