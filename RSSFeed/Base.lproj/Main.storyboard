@@ -38,7 +38,7 @@
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
                                                     <attributes>
-                                                        <font key="NSFont" size="24" name="HelveticaNeue-CondensedBold"/>
+                                                        <font key="NSFont" size="20" name="HelveticaNeue-CondensedBold"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
