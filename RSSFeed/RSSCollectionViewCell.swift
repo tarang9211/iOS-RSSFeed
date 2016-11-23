@@ -22,7 +22,7 @@ class RSSCollectionViewCell: UICollectionViewCell {
         if let image = model.image {
             imageView.image = image
         } else {
-            self.imageView.downloadImage(link: model.imgUrl, callback: { (image) in
+            self.imageView.downloadImage(link: model.imgUrl, duration: 0.40, callback: { (image) in
                 model.image = image
             })
         }
