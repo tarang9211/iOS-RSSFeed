@@ -41,7 +41,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
         let layout = UICollectionViewFlowLayout()
         self.collectionView?.collectionViewLayout = layout
         
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.4)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.45)
         layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }

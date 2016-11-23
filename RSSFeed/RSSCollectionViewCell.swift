@@ -16,8 +16,8 @@ class RSSCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     
     func setUpCell(model: RSSModel) {
-        self.titleLabel.text = model.title
-        self.dateLabel.text = model.pubdate
+//        self.titleLabel.text = model.title
+        print(model.imgUrl)
         
         if let image = model.image {
             imageView.image = image
