@@ -17,6 +17,13 @@ extension UIImageView {
     func downloadImage(link: String) {
         
         let url =  URL(string: link)!
-        print(url)
+        let urlRequest = URLRequest(url: url)
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            
+        }
+        
+        task.resume()
     }
 }
