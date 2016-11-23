@@ -11,13 +11,13 @@ import UIKit
 
 class RSSCollectionViewCell: UICollectionViewCell {
  
+    
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
+
     func setUpCell(model: RSSModel) {
-//        self.titleLabel.text = model.title
-        print(model.imgUrl)
+        self.titleLabel.text = model.title
         
         if let image = model.image {
             imageView.image = image

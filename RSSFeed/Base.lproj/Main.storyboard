@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,19 +31,34 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A8x-J0-QSn">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="125" id="b7M-jH-NoM"/>
+                                                <constraint firstAttribute="height" constant="175" id="b7M-jH-NoM"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cys-sN-nxh">
+                                            <attributedString key="attributedText">
+                                                <fragment content="Label">
+                                                    <attributes>
+                                                        <font key="NSFont" size="24" name="HelveticaNeue-CondensedBold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="A8x-J0-QSn" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leading" id="IOz-tC-7LW"/>
+                                    <constraint firstItem="Cys-sN-nxh" firstAttribute="top" secondItem="A8x-J0-QSn" secondAttribute="bottom" constant="15" id="Kbv-D2-Fpw"/>
+                                    <constraint firstItem="Cys-sN-nxh" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leadingMargin" constant="10" id="TLi-qn-qwX"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Cys-sN-nxh" secondAttribute="trailing" constant="10" id="WCj-ZP-bW0"/>
                                     <constraint firstItem="A8x-J0-QSn" firstAttribute="top" secondItem="9dl-Tk-rVw" secondAttribute="top" id="szv-YH-Zxc"/>
                                     <constraint firstAttribute="trailing" secondItem="A8x-J0-QSn" secondAttribute="trailing" id="uHA-oi-u3l"/>
                                 </constraints>
                                 <size key="customSize" width="375" height="271"/>
                                 <connections>
                                     <outlet property="imageView" destination="A8x-J0-QSn" id="2r8-I6-yhZ"/>
+                                    <outlet property="titleLabel" destination="Cys-sN-nxh" id="IAK-Nr-NRx"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
