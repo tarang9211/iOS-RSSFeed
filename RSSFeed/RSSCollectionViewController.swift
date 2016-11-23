@@ -130,6 +130,13 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
             model.link = self.link
             model.pubdate = self.pubdate
             model.description = self.content
+            
+            guard let startRange = self.content.range(of: "https://"), let endRange = self.content.range(of: ".jpg") else {
+                return
+            }
+            
+            let subStr = self.content[startRange.lowerBound...endRange.upperBound]
+            model.imgUrl = subStr
             items.append(model)
         }
     }
@@ -161,7 +168,7 @@ class RSSCustomViewController: UICollectionViewController, XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
-            print(self.items[0].description)
+//            print(self.items[0].description)
         }
     }
     
