@@ -28,9 +28,7 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
         super.viewDidLoad()
         self.getRSSFeed()
         self.layoutCells()
-        
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
-        self.navigationController?.hidesBarsOnSwipe = true
+        self.setUpNavBar()
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,10 +38,27 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
     private func layoutCells() {
         let layout = UICollectionViewFlowLayout()
         
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.925, height: UIScreen.main.bounds.height * 0.40)
+        layout.itemSize = CGSize(width: self.view.bounds.size.width-16, height: self.view.bounds.size.height*0.40)
         layout.minimumLineSpacing = 20
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 5, bottom: 20, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 8, bottom: 20, right: 8)
         self.collectionView?.collectionViewLayout = layout
+    }
+    
+    private func setUpNavBar() {
+        let titleLabel = UILabel()
+        let attributes : [String: Any] = [
+                                            NSForegroundColorAttributeName: UIColor.white,
+                                            NSKernAttributeName: 10.0,
+                                            NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 18)!
+                                         ]
+        
+        let attributedTitle = NSAttributedString(string: "TECHCRUNCH", attributes: attributes)
+        titleLabel.attributedText = attributedTitle
+        titleLabel.sizeToFit()
+        self.navigationItem.titleView = titleLabel
+        
+        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+        self.navigationController?.hidesBarsOnSwipe = true
     }
     
     // MARK: CollectionViewController methods
