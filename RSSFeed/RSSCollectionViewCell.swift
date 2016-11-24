@@ -14,11 +14,12 @@ class RSSCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
     
 
     func setUpCell(model: RSSModel) {
         self.titleLabel.text = model.title
-        print(model.pubdate)
+        self.dateLabel.text = self.parseForDate(dateStr: model.pubdate)
         
         if let image = model.image {
             imageView.image = image
@@ -40,6 +41,25 @@ class RSSCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOffset = CGSize(width:0, height: 2.0)
         self.layer.shadowOpacity = 0.2
         self.layer.masksToBounds = false;
+    }
+    
+    //display date from RSS feed, else current date in MMM, yy format
+    private func parseForDate(dateStr: String) -> String {
+        let trimDateStr = dateStr.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE, dd MMM yyy HH:mm:ss +zzzz"
+        
+        if let date = dateFormatter.date(from: trimDateStr) {
+            dateFormatter.dateFormat = "MMM, yy"
+            return dateFormatter.string(from: date)
+        }
+        
+        let currentDate = Date()
+        let curentDateFormat = DateFormatter()
+        curentDateFormat.dateFormat = "MMM, yy"
+        return curentDateFormat.string(from: currentDate)
+        
     }
     
     

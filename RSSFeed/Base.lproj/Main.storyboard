@@ -11,7 +11,7 @@
         <scene sceneID="mt3-sB-Gy2">
             <objects>
                 <collectionViewController id="txd-NC-LwE" customClass="RSSCollectionViewController" customModule="RSSFeed" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Jvi-Eu-LNY">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Jvi-Eu-LNY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -45,13 +45,11 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0g-iR-FP4">
-                                            <frame key="frameInset" minX="325" minY="242" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0g-iR-FP4">
                                             <attributedString key="attributedText">
                                                 <fragment content="Date">
                                                     <attributes>
-                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                        <font key="NSFont" size="10" name="HelveticaNeue-ThinItalic"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -61,15 +59,18 @@
                                     </subviews>
                                 </view>
                                 <constraints>
+                                    <constraint firstAttribute="bottomMargin" secondItem="U0g-iR-FP4" secondAttribute="bottom" id="2p8-AJ-gAy"/>
                                     <constraint firstItem="A8x-J0-QSn" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leading" id="IOz-tC-7LW"/>
                                     <constraint firstItem="Cys-sN-nxh" firstAttribute="top" secondItem="A8x-J0-QSn" secondAttribute="bottom" constant="15" id="Kbv-D2-Fpw"/>
                                     <constraint firstItem="Cys-sN-nxh" firstAttribute="leading" secondItem="9dl-Tk-rVw" secondAttribute="leadingMargin" constant="10" id="TLi-qn-qwX"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="Cys-sN-nxh" secondAttribute="trailing" constant="10" id="WCj-ZP-bW0"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="U0g-iR-FP4" secondAttribute="trailing" id="lGN-LQ-R55"/>
                                     <constraint firstItem="A8x-J0-QSn" firstAttribute="top" secondItem="9dl-Tk-rVw" secondAttribute="top" id="szv-YH-Zxc"/>
                                     <constraint firstAttribute="trailing" secondItem="A8x-J0-QSn" secondAttribute="trailing" id="uHA-oi-u3l"/>
                                 </constraints>
                                 <size key="customSize" width="375" height="271"/>
                                 <connections>
+                                    <outlet property="dateLabel" destination="U0g-iR-FP4" id="g8g-Zw-dfZ"/>
                                     <outlet property="imageView" destination="A8x-J0-QSn" id="2r8-I6-yhZ"/>
                                     <outlet property="titleLabel" destination="Cys-sN-nxh" id="IAK-Nr-NRx"/>
                                 </connections>
