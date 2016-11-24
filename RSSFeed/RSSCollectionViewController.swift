@@ -39,11 +39,11 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
     
     private func layoutCells() {
         let layout = UICollectionViewFlowLayout()
-        self.collectionView?.collectionViewLayout = layout
         
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.45)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width * 0.85, height: UIScreen.main.bounds.height * 0.40)
         layout.minimumLineSpacing = 20
         layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
+        self.collectionView?.collectionViewLayout = layout
     }
     
     // MARK: CollectionViewController methods
