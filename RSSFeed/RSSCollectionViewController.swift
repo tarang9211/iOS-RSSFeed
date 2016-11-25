@@ -78,6 +78,7 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
         let urlRequest = URLRequest(url: url)
         
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             self.xmlParser = XMLParser(data: data!) //pass data to the parser instance
             self.xmlParser.delegate = self
             self.xmlParser.parse()
@@ -178,6 +179,7 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
     func parserDidEndDocument(_ parser: XMLParser) {
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }
     
