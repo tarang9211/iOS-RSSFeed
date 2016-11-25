@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SafariServices
 
 class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate {
     private var xmlParser: XMLParser!
@@ -70,6 +71,13 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: customCell, for: indexPath) as! RSSCollectionViewCell
         cell.setUpCell(model: items[indexPath.row])
         return cell
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedArticle = items[indexPath.row]
+        let safariVC = SFSafariViewController(url: URL(string: selectedArticle.link)!, entersReaderIfAvailable: true)
+        present(safariVC, animated: true, completion: nil)
     }
     
     // MARK: XML Parsing
