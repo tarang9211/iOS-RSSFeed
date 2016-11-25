@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SafariServices
 
-class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate {
+class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate, UIViewControllerPreviewingDelegate {
     private var xmlParser: XMLParser!
     private var session = URLSession(configuration: .default)
     private var items = [RSSModel]()
@@ -30,12 +30,35 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
         self.getRSSFeed()
         self.layoutCells()
         self.setUpNavBar()
+        
+        if (traitCollection.forceTouchCapability == .available) {
+            registerForPreviewing(with: self, sourceView: self.collectionView!)
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: 3D Touch Delegates
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+
+        guard let currentIndexPath = self.collectionView?.indexPathForItem(at: location) else {
+            return nil
+        }
+        
+        guard let currentUrl = URL(string: items[currentIndexPath.row].link) else {
+            return nil
+        }
+        let safariVC = SFSafariViewController(url: currentUrl, entersReaderIfAvailable: true)
+        return safariVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        show(viewControllerToCommit, sender: self)
+    }
+    
+    // MARK: ViewController customization
     private func layoutCells() {
         let layout = UICollectionViewFlowLayout()
         
