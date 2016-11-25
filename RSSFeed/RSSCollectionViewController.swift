@@ -50,8 +50,8 @@ class RSSCollectionViewController: UICollectionViewController, XMLParserDelegate
         guard let currentUrl = URL(string: items[currentIndexPath.row].link) else {
             return nil
         }
-        let safariVC = SFSafariViewController(url: currentUrl, entersReaderIfAvailable: true)
-        return safariVC
+        let previewSafariVC = SFSafariViewController(url: currentUrl, entersReaderIfAvailable: true)
+        return previewSafariVC
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
